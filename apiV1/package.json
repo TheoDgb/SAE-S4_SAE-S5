@@ -1,0 +1,16 @@
+{
+  "name": "saetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "matplotlib": "^1.0.0",
+    "node": "^18.13.0",
+    "python-shell": "^3.0.1"
+  }
+}
