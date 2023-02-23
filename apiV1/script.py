@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
 # y = np.array([335,125,125,115])
 # mylabels = ["Apples","Bananas","Cherries","Dates"]
@@ -20,5 +19,5 @@ import pandas as pd
 y = np.array([335, 125, 125, 115])
 mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
 plt.pie(y, labels = mylabels, startangle = 90)
-plt.show()
 plt.savefig("image.png")
+plt.show()

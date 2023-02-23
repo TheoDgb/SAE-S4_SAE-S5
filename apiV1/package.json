@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
     "matplotlib": "^1.0.0",
     "node": "^18.13.0",
     "python-shell": "^3.0.1"
