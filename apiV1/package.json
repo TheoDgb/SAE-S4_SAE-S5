@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
     "matplotlib": "^1.0.0",
     "node": "^18.13.0",
     "python-shell": "^3.0.1"
