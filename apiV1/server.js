@@ -8,6 +8,15 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// ---
+// Définir un dossier "public" pour les fichiers statiques
+app.use(express.static('public'));
+
+app.get('/image', (req, res) => {
+    res.sendFile(__dirname + '/public/images/image.png');
+});
+// ---
+
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
