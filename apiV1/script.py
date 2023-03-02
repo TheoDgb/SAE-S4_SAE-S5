@@ -14,7 +14,11 @@ for file in file_names[1:]:
 
 donnees = donnees.sort_values(by='id').reset_index(drop=True)
 
-# afficher un graphe de la répartition des usagers par sexe
+# afficher un graphe de la répartition des usagers par sexe et afficher homme pour 1 et femme pour 2 dans le label
 sns.countplot(x='sexe', data=donnees)
+plt.title('Répartition des usagers par sexe')
+plt.xlabel('Sexe')
+plt.ylabel('Nombre d\'usagers')
+plt.xticks([0, 1, 2], ['Non renseigné','Homme', 'Femme'])
 plt.savefig("./public/images/image.png")
 plt.show()

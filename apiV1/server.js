@@ -93,19 +93,19 @@ const https = require('https');
 //     response.pipe(file2);
 // });
 
-// const filecaracteristiques2021 = fs.createWriteStream("./data/accidents2.csv");
-// const request1 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
-//     response.pipe(filecaracteristiques2021);
-// });
-// const filelieux2021 = fs.createWriteStream("./data/accidents2.csv");
-// const request2 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
-//     response.pipe(filelieux2021);
-// });
-// const fileusagers2021 = fs.createWriteStream("./data/accidents2.csv");
-// const request3 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
-//     response.pipe(fileusagers2021);
-// });
-// const filevehicules2021 = fs.createWriteStream("./data/accidents2.csv");
-// const request4 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
-//     response.pipe(filevehicules2021);
-// });
+const filecaracteristiques2021 = fs.createWriteStream("./data/accidents2.csv");
+const request1 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
+    response.pipe(filecaracteristiques2021);
+});
+const filelieux2021 = fs.createWriteStream("./data/accidents2.csv");
+const request2 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
+    response.pipe(filelieux2021);
+});
+const fileusagers2021 = fs.createWriteStream("./data/accidents2.csv");
+const request3 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
+    response.pipe(fileusagers2021);
+});
+const filevehicules2021 = fs.createWriteStream("./data/accidents2.csv");
+const request4 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
+    response.pipe(filevehicules2021);
+});
