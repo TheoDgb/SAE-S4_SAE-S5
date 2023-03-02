@@ -19,5 +19,5 @@ import numpy as np
 y = np.array([335, 125, 125, 115])
 mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
 plt.pie(y, labels = mylabels, startangle = 90)
-plt.savefig("image.png")
+plt.savefig("./public/images/image.jpg")
 plt.show()
