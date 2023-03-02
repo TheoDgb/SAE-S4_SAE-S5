@@ -1,23 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
+import pandas as pd
 
-# y = np.array([335,125,125,115])
-# mylabels = ["Apples","Bananas","Cherries","Dates"]
-#
-# plt.pie(y,labels=mylabels,startangle=90)
-# plt.draw()
-# plt.savefig('image.png',dpi=100)
+file_names = ['./data/usagers-2021.csv', './data/vehicules-2021.csv', './data/lieux-2021.csv', './data/caracteristiques-2021.csv']
 
 
+donnees = pd.read_csv(file_names[0])
 
+for file in file_names[1:]:
+    temp_df = pd.read_csv(file)
+    donnees = pd.merge(donnees, temp_df, on='id', how='inner')
 
-# test mais marche pas
-# accidents_data = pd.read_csv('../data/lieux-2021.csv')
-# plt.plot(accidents_data['Num_Acc'], accidents_data['catr'])
+donnees = donnees.sort_values(by='id').reset_index(drop=True)
 
-# ca affiche le graphe de base
-y = np.array([335, 125, 125, 115])
-mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
-plt.pie(y, labels = mylabels, startangle = 90)
-plt.savefig("./public/images/image.jpg")
+# afficher un graphe de la répartition des usagers par sexe
+sns.countplot(x='sexe', data=donnees)
+plt.savefig("./public/images/image.png")
 plt.show()
