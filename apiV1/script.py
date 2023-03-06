@@ -36,7 +36,7 @@ donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
 
 # afficher un graphe de la répartition des usagers par sexe
-sns.countplot(x='sexe', data=donnees)
+sns.countplot(x='sexe', data=donnees_2021)
 plt.title('Répartition des usagers par sexe')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')
