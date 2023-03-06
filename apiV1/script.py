@@ -35,8 +35,11 @@ donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
 
 ################################# Modifications des données 2021 #################################
+
 donnees_2021 = donnees_2021.loc[donnees_2021['sexe'] != -1]
 
+
+################################# Graphes #################################
 
 # afficher un graphe de la répartition des usagers par sexe
 sns.countplot(x='sexe', data=donnees_2021)
