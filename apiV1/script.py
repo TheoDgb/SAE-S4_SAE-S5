@@ -34,6 +34,9 @@ for file in file_names[1:]:
 donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
 
+################################# Modifications des données 2021 #################################
+donnees_2021 = donnees_2021.loc[donnees_2021['sexe'] != -1]
+
 
 # afficher un graphe de la répartition des usagers par sexe
 sns.countplot(x='sexe', data=donnees_2021)
