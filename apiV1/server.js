@@ -20,10 +20,6 @@ app.get('/', (req, res) => {
 app.get('/swagger', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'swagger.html'));
 });
-// PORT
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-});
 
 // EN BASE 64
 const {PythonShell} = require('python-shell');
@@ -75,3 +71,7 @@ const https = require('https');
 // const request4 = https.get("https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-114007/usagers-2021.csv", function(response) {
 //     response.pipe(filevehicules2021);
 // });
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+});
