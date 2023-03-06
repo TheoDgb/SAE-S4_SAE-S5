@@ -33,6 +33,7 @@ for file in file_names[1:]:
 
 donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
+donnees_combined = pd.concat([donnees_2019, donnees_2020, donnees_2021], ignore_index=True)
 
 ################################# Modifications des données 2021 #################################
 
@@ -66,8 +67,16 @@ plt.xticks([0, 1], ['Homme', 'Femme'])
 plt.savefig("./public/images/image_sexe2019.png")
 # plt.show()
 
+sns.countplot(x='sexe', data=donnees_combined)
+plt.title('Répartition des usagers par sexe')
+plt.xlabel('Sexe')
+plt.ylabel('Nombre d\'usagers')
+plt.xticks([0, 1], ['Homme', 'Femme'])
+plt.savefig("./public/images/image_sexe_combined.png")
+# plt.show()
+
 #Affiche un graphe avec le type de collisions
-sns.countplot(x='col', data=donnees_2021)
+sns.countplot(x='col', data=donnees_combined)
 plt.title('Type de collisions')
 plt.xlabel('Type de collisions')
 plt.ylabel('Nombre de collisions')
