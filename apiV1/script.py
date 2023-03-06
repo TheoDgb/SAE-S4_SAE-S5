@@ -3,16 +3,37 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
-file_names = ['./data/usagers-2021.csv', './data/vehicules-2021.csv', './data/lieux-2021.csv', './data/caracteristiques-2021.csv']
+################################# Importation des fichiers CSV #################################
 
-
-donnees = pd.read_csv(file_names[0])
+file_names = ['2021/usagers-2021.csv', '2021/vehicules-2021.csv', '2021/lieux-2021.csv', '2021/caracteristiques-2021.csv']
+donnees_2021 = pd.read_csv(file_names[0])
 
 for file in file_names[1:]:
     temp_df = pd.read_csv(file)
-    donnees = pd.merge(donnees, temp_df, on='id', how='inner')
+    donnees_2021 = pd.merge(donnees_2021, temp_df, on='id', how='inner')
 
-donnees = donnees.sort_values(by='id').reset_index(drop=True)
+donnees_2021 = donnees_2021.sort_values(by='id').reset_index(drop=True)
+
+
+file_names = ['2020/usagers-2020.csv', '2020/vehicules-2020.csv', '2020/lieux-2020.csv', '2020/caracteristiques-2020.csv']
+donnees_2020 = pd.read_csv(file_names[0])
+
+for file in file_names[1:]:
+    temp_df = pd.read_csv(file)
+    donnees_2020 = pd.merge(donnees_2020, temp_df, on='id', how='inner')
+
+donnees_2020 = donnees_2020.sort_values(by='id').reset_index(drop=True)
+
+file_names = ['2019/usagers-2019.csv', '2019/vehicules-2019.csv', '2019/lieux-2019.csv', '2019/caracteristiques-2019.csv']
+donnees_2019 = pd.read_csv(file_names[0])
+
+for file in file_names[1:]:
+    temp_df = pd.read_csv(file)
+    donnees_2019 = pd.merge(donnees_2019, temp_df, on='id', how='inner')
+
+donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
+
+
 
 # afficher un graphe de la répartition des usagers par sexe
 sns.countplot(x='sexe', data=donnees)
