@@ -22,3 +22,14 @@ plt.ylabel('Nombre d\'usagers')
 plt.xticks([0, 1, 2], ['Non renseigné','Homme', 'Femme'])
 plt.savefig("./public/images/image.png")
 plt.show()
+
+#Affiche un graphe avec le type de collisions
+sns.countplot(x='col', data=donnees_2021)
+plt.title('Type de collisions')
+plt.xlabel('Type de collisions')
+plt.ylabel('Nombre de collisions')
+plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - frontale', 'Deux véhicules – par l’arrière',
+                                       'Deux véhicules – par le coté', 'Trois véhicules et plus – en chaîne', 
+                                       'Trois véhicules et plus - collisions multiples', 'Autre collision',
+                                       'Sans collision'], rotation=90)
+plt.show()
