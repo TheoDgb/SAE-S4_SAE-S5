@@ -33,11 +33,12 @@ for file in file_names[1:]:
 
 donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
-donnees_combined = pd.concat([donnees_2019, donnees_2020, donnees_2021], ignore_index=True)
 
 ################################# Modifications des données 2021 #################################
 
 donnees_2021 = donnees_2021.loc[donnees_2021['sexe'] != -1]
+
+donnees_combined = pd.concat([donnees_2019, donnees_2020, donnees_2021], ignore_index=True)
 
 
 ################################# Graphes #################################
@@ -68,7 +69,7 @@ plt.savefig("./public/images/image_sexe2019.png")
 # plt.show()
 
 sns.countplot(x='sexe', data=donnees_combined)
-plt.title('Répartition des usagers par sexe')
+plt.title('Répartition des usagers par sexe 2019-2020-2021')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')
 plt.xticks([0, 1], ['Homme', 'Femme'])
@@ -84,3 +85,12 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - front
                                        'Deux véhicules – par le coté', 'Trois véhicules et plus – en chaîne',
                                        'Trois véhicules et plus - collisions multiples', 'Autre collision',
                                        'Sans collision'], rotation=90)
+
+# faire un scatter plot de la longitude et de la latitude
+plt.scatter(donnees_2019['long'], donnees_2019['lat'], s=0.1)
+plt.title('Longitude et latitude')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.savefig("./public/images/image_long_lat.png")
+# plt.show()
+#Très long

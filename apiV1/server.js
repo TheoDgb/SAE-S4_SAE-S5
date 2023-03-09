@@ -35,7 +35,7 @@ PythonShell.run('script.py', options, function (err) {
         if (err) throw err;
         const base64Image = Buffer.from(data, 'binary').toString('base64');
         const imgSrc = `data:image/png;base64,${base64Image}`;
-        console.log(imgSrc);
+        // console.log(imgSrc);
     });
 });
 
