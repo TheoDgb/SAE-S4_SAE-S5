@@ -2,15 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// afficher une page html avec express qui affiche une page html : "accueil.html"
-// en localhost:3000 avec un fichier env sans besoin de connexion
-
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
 app.use(express.static('public'));
 
 // ROUTES
@@ -45,16 +41,18 @@ PythonShell.run('script.py', options, function (err) {
     });
 });
 
-// deuxieme script au cas ou
-// PythonShell.run('script2.py', options, function (err) {
-//     if (err) throw err;
-//     fs.readFile('./public/images/image2.png', (err, data) => {
-//         if (err) throw err;
-//         const base64Image = Buffer.from(data, 'binary').toString('base64');
-//         const imgSrc = `data:image/png;base64,${base64Image}`;
-//         console.log(imgSrc);
-//     });
-// });
+// Nombre d'accidents par mois de l'année
+PythonShell.run('script2.py', options, function (err) {
+    if (err) throw err;
+    fs.readFile('./public/images/image.png', (err, data) => {
+        if (err) throw err;
+        const base64Image = Buffer.from(data, 'binary').toString('base64');
+        const imgSrc = `data:image/png;base64,${base64Image}`;
+        // console.log(imgSrc);
+    });
+});
+
+
 
 // télécharger des datasets en csv depuis opendaatsoft sans axios des accidents corporels de la circulation millésimé:
 

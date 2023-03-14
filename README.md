@@ -31,6 +31,7 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Théo : Ajout et utilisation de Bootstrap
 
 ### 14/03
-    Nicolas : Nettoyage des données
-    Hugo : Fusion des données / Réalisation des premiers graphes barplot avec les données fusionnées
-    Théo : Creation de routes / affichage des images créées par le script Python / correction de crashs de l'API par le script Python sur le serveur.js
+    => Recherche pour réaliser une IA capable de prédire le nombre d'accidents
+    Nicolas : Nettoyage des données encore trop grosses
+    Hugo : Modifications / création de graphes
+    Théo : Implémentation de différents graphes dans l'API

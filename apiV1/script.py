@@ -95,6 +95,26 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - front
                                        'Trois véhicules et plus - collisions multiples', 'Autre collision',
                                        'Sans collision'], rotation=90)
 
+
+
+# ===== Créer une carte centrée sur la France =====
+map = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
+
+# Ajouter une couche de chaleur (heatmap) en utilisant les coordonnées des accidents
+heatmap = HeatMap(data=donnees_combined[['lat', 'long']], radius=15)
+heatmap.add_to(map)
+
+# Ajouter une couche de contrôle avec une légende pour la heatmap
+folium.LayerControl().add_to(map)
+map.add_child(heatmap)
+
+# map.save("./public/view/heatmapshow.html")
+# Afficher la carte
+# map
+
+
+
+
 #3D Histogramme
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -117,18 +137,3 @@ ax.set_zlabel('Nombre d\'accidents')
 ax.set_title('Histogramme 3D du nombre d\'accidents par heures et mois')
 plt.savefig("./public/images/image_3d_accidents_heures_mois.png")
 # plt.show()
-
-# Créer une carte centrée sur la France
-map = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
-
-# Ajouter une couche de chaleur (heatmap) en utilisant les coordonnées des accidents
-heatmap = HeatMap(data=donnees_combined[['lat', 'long']], radius=15)
-heatmap.add_to(map)
-
-# Ajouter une couche de contrôle avec une légende pour la heatmap
-folium.LayerControl().add_to(map)
-map.add_child(heatmap)
-
-# map.save("./public/view/heatmapshow.html")
-# Afficher la carte
-# map

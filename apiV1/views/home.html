@@ -36,6 +36,62 @@
         <img src="/images/image_sexe2020.png" alt="image_sexe2020" style="width: 50%; height: auto;">
         <img src="/images/image_sexe2019.png" alt="image_sexe2019" style="width: 50%; height: auto;">
         <img src="/images/image_3d_accidents_heures_mois.png" alt="image_3d_accidents_heures_mois" style="width: 50%; height: auto;">
+
+
+
+        <h2>Filtrer par année</h2>
+        <form>
+            <input type="radio" id="all" name="year" value="all" checked>
+            <label for="all">Années 2019-2020-2021</label><br>
+            <input type="radio" id="2019" name="year" value="2019">
+            <label for="2019">2019</label><br>
+            <input type="radio" id="2020" name="year" value="2020">
+            <label for="2020">2020</label><br>
+            <input type="radio" id="2021" name="year" value="2021">
+            <label for="2021">2021</label><br>
+        </form>
+        <div id="image-container">
+            <img id="all-image" src="/images/image_accidents_mois_all.png">
+            <img id="2019-image" src="/images/image_accidents_mois_2019.png" style="display: none;">
+            <img id="2020-image" src="/images/image_accidents_mois_2020.png" style="display: none;">
+            <img id="2021-image" src="/images/image_accidents_mois_2021.png" style="display: none;">
+        </div>
+        <script>
+            const yearRadios = document.getElementsByName('year');
+            const imageContainer = document.getElementById('image-container');
+
+            yearRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    // Affiche l'image sélectionné et cache les autres
+                    switch (radio.value) {
+                        case '2019':
+                            showImage('2019-image');
+                            break;
+                        case '2020':
+                            showImage('2020-image');
+                            break;
+                        case '2021':
+                            showImage('2021-image');
+                            break;
+                        default:
+                            showImage('all-image');
+                            break;
+                    }
+                });
+            });
+
+            // Affiche l'image ayant l'id spécifié et cache les autres
+            function showImage(imageId) {
+                const images = imageContainer.getElementsByTagName('img');
+                for (let i = 0; i < images.length; i++) {
+                    if (images[i].id === imageId) {
+                        images[i].style.display = 'block';
+                    } else {
+                        images[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
     </div>
 </body>
 </html>
