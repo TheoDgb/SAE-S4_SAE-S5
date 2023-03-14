@@ -95,18 +95,28 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - front
                                        'Trois véhicules et plus - collisions multiples', 'Autre collision',
                                        'Sans collision'], rotation=90)
 
-# faire un scatter plot de la longitude et de la latitude
-# plt.scatter(donnees_2019['long'], donnees_2019['lat'], s=0.1)
-# plt.title('Longitude et latitude')
-# plt.xlabel('Longitude')
-# plt.ylabel('Latitude')
-# plt.savefig("./public/images/image_long_lat.png")
+#3D Histogramme
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+# Créer un histogramme en 2D des heures et des mois
+hist, xedges, yedges = np.histogram2d(donnees_combined['hrmn'], donnees_combined['mois'], bins=(24, 12))
+# Obtenir les coordonnées x, y et z des bords de l'histogramme
+xpos, ypos = np.meshgrid(xedges[:-1], yedges[:-1], indexing="ij")
+xpos = xpos.ravel()
+ypos = ypos.ravel()
+zpos = 0
+# Obtenir les dimensions des bords de chaque rectangle d'histogramme
+dx = dy = 1
+dz = hist.ravel()
+# Créer l'histogramme en 3D
+ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b', zsort='average')
+# Ajouter les étiquettes des axes
+ax.set_xlabel('Heures')
+ax.set_ylabel('Mois')
+ax.set_zlabel('Nombre d\'accidents')
+ax.set_title('Histogramme 3D du nombre d\'accidents par heures et mois')
+plt.savefig("./public/images/image_3d_accidents_heures_mois.png")
 # plt.show()
-#Très long
-
-
-
-
 
 # Créer une carte centrée sur la France
 map = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
