@@ -29,3 +29,8 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 ### 9/03
     => Recherche de nouveaux graphes à réaliser / Découverte de Jupyter
     Théo : Ajout et utilisation de Bootstrap
+
+### 14/03
+    Nicolas : Nettoyage des données
+    Hugo : Fusion des données / Réalisation des premiers graphes barplot avec les données fusionnées
+    Théo : Creation de routes / affichage des images créées par le script Python / correction de crashs de l'API par le script Python sur le serveur.js

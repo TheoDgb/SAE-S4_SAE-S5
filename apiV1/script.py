@@ -2,6 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import pandas as pd
+# 3D graphe
+from mpl_toolkits.mplot3d import Axes3D
+# Heatmap
+import folium
+from folium.plugins import HeatMap
 
 ################################# Importation des fichiers CSV #################################
 
@@ -34,13 +39,17 @@ for file in file_names[1:]:
 donnees_2019 = donnees_2019.sort_values(by='id').reset_index(drop=True)
 
 
-################################# Modifications des données 2021 #################################
+################################# Modifications des données #################################
 
 donnees_2021 = donnees_2021.loc[donnees_2021['sexe'] != -1]
 
 donnees_combined = pd.concat([donnees_2019, donnees_2020, donnees_2021], ignore_index=True)
 
-
+# rempalce les "," par des ".", les ":" par des "."  et convertit en float
+donnees_combined['lat'] = donnees_combined['lat'].str.replace(',', '.').astype(float)
+donnees_combined['long'] = donnees_combined['long'].str.replace(',', '.').astype(float)
+donnees_combined['hrmn'] = donnees_combined['hrmn'].str.replace(':', '.').astype(float)
+donnees_combined = donnees_combined.loc[donnees_combined['vma'] != -1]
 ################################# Graphes #################################
 
 # afficher un graphe de la répartition des usagers par sexe
@@ -87,10 +96,29 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - front
                                        'Sans collision'], rotation=90)
 
 # faire un scatter plot de la longitude et de la latitude
-plt.scatter(donnees_2019['long'], donnees_2019['lat'], s=0.1)
-plt.title('Longitude et latitude')
-plt.xlabel('Longitude')
-plt.ylabel('Latitude')
-plt.savefig("./public/images/image_long_lat.png")
+# plt.scatter(donnees_2019['long'], donnees_2019['lat'], s=0.1)
+# plt.title('Longitude et latitude')
+# plt.xlabel('Longitude')
+# plt.ylabel('Latitude')
+# plt.savefig("./public/images/image_long_lat.png")
 # plt.show()
 #Très long
+
+
+
+
+
+# Créer une carte centrée sur la France
+map = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
+
+# Ajouter une couche de chaleur (heatmap) en utilisant les coordonnées des accidents
+heatmap = HeatMap(data=donnees_combined[['lat', 'long']], radius=15)
+heatmap.add_to(map)
+
+# Ajouter une couche de contrôle avec une légende pour la heatmap
+folium.LayerControl().add_to(map)
+map.add_child(heatmap)
+
+# map.save("./public/view/heatmapshow.html")
+# Afficher la carte
+# map

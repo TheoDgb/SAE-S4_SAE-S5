@@ -20,6 +20,12 @@ app.get('/', (req, res) => {
 app.get('/swagger', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'swagger.html'));
 });
+app.get('/heatmap', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'heatmap.html'));
+});
+app.get('/heatmapshow', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'heatmapshow.html'));
+});
 
 // EN BASE 64
 const {PythonShell} = require('python-shell');
