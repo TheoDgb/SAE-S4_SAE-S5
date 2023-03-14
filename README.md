@@ -34,4 +34,4 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     => Recherche pour réaliser une IA capable de prédire le nombre d'accidents
     Nicolas : Nettoyage des données encore trop grosses
     Hugo : Modifications / création de graphes
-    Théo : Implémentation de différents graphes dans l'API
+    Théo : Implémentation de différents graphes dans l'API et ajout d'un filtre pour choisir l'année du countplot accidents par mois
