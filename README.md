@@ -35,3 +35,8 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Nicolas : Nettoyage des données encore trop grosses
     Hugo : Modifications / création de graphes
     Théo : Implémentation de différents graphes dans l'API et ajout d'un filtre pour choisir l'année du countplot accidents par mois
+
+### 16/04
+    Nicolas : 
+    Hugo : 
+    Théo : Ajout d'une section sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule
