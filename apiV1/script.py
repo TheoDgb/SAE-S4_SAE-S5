@@ -53,6 +53,14 @@ donnees_combined = donnees_combined.loc[donnees_combined['vma'] != -1]
 ################################# Graphes #################################
 
 # afficher un graphe de la répartition des usagers par sexe
+sns.countplot(x='sexe', data=donnees_combined)
+plt.title('Répartition des usagers par sexe en 2019-2020-2021')
+plt.xlabel('Sexe')
+plt.ylabel('Nombre d\'usagers')
+plt.xticks([0, 1], ['Homme', 'Femme'])
+plt.savefig("./public/images/image_sexe_all.png")
+# plt.show()
+
 sns.countplot(x='sexe', data=donnees_2021)
 plt.title('Répartition des usagers par sexe en 2021')
 plt.xlabel('Sexe')
@@ -94,7 +102,8 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], ['Non renseigné', 'Deux véhicules - front
                                        'Deux véhicules – par le coté', 'Trois véhicules et plus – en chaîne',
                                        'Trois véhicules et plus - collisions multiples', 'Autre collision',
                                        'Sans collision'], rotation=90)
-
+plt.savefig("./public/images/image_accidents_type_collisions.png")
+# plt.show()
 
 
 # ===== Créer une carte centrée sur la France =====

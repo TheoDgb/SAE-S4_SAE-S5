@@ -32,29 +32,33 @@
     </nav>
     <div class="container">
         <h2>Home</h2>
-        <img src="/images/image_sexe2021.png" alt="image_sexe2021" style="width: 50%; height: auto;">
-        <img src="/images/image_sexe2020.png" alt="image_sexe2020" style="width: 50%; height: auto;">
-        <img src="/images/image_sexe2019.png" alt="image_sexe2019" style="width: 50%; height: auto;">
-        <img src="/images/image_3d_accidents_heures_mois.png" alt="image_3d_accidents_heures_mois" style="width: 50%; height: auto;">
+        <img src="/images/image_3d_accidents_heures_mois.png" id="image_3d_accidents_heures_mois" alt="image_3d_accidents_heures_mois" style="width: 50%; height: auto;">
+        <img src="/images/image_accidents_type_collisions.png" id="image_accidents_type_collisions" alt="image_accidents_type_collisions" style="width: 50%; height: auto;">
 
 
-
-        <h2>Filtrer par année</h2>
-        <form>
-            <input type="radio" id="all" name="year" value="all" checked>
-            <label for="all">Années 2019-2020-2021</label><br>
-            <input type="radio" id="2019" name="year" value="2019">
-            <label for="2019">2019</label><br>
-            <input type="radio" id="2020" name="year" value="2020">
-            <label for="2020">2020</label><br>
-            <input type="radio" id="2021" name="year" value="2021">
-            <label for="2021">2021</label><br>
-        </form>
+        <div class="card">
+            <h2>Filtrer par année</h2>
+            <form>
+                <input type="radio" id="all" name="year" value="all" checked>
+                <label for="all">Années 2019-2020-2021</label><br>
+                <input type="radio" id="2021" name="year" value="2021">
+                <label for="2021">2021</label><br>
+                <input type="radio" id="2020" name="year" value="2020">
+                <label for="2020">2020</label><br>
+                <input type="radio" id="2019" name="year" value="2019">
+                <label for="2019">2019</label><br>
+            </form>
+        </div>
         <div id="image-container">
-            <img id="all-image" src="/images/image_accidents_mois_all.png">
-            <img id="2019-image" src="/images/image_accidents_mois_2019.png" style="display: none;">
-            <img id="2020-image" src="/images/image_accidents_mois_2020.png" style="display: none;">
-            <img id="2021-image" src="/images/image_accidents_mois_2021.png" style="display: none;">
+            <img id="image_sexe_all" src="/images/image_sexe_all.png">
+            <img id="image_sexe2021" src="/images/image_sexe2021.png" style="display: none;">
+            <img id="image_sexe2020" src="/images/image_sexe2020.png" style="display: none;">
+            <img id="image_sexe2019" src="/images/image_sexe2019.png"style="display: none;">
+
+            <img id="image_accidents_mois_all" src="/images/image_accidents_mois_all.png">
+            <img id="image_accidents_mois_2019" src="/images/image_accidents_mois_2019.png" style="display: none;">
+            <img id="image_accidents_mois_2020" src="/images/image_accidents_mois_2020.png" style="display: none;">
+            <img id="image_accidents_mois_2021" src="/images/image_accidents_mois_2021.png" style="display: none;">
         </div>
         <script>
             const yearRadios = document.getElementsByName('year');
@@ -62,29 +66,29 @@
 
             yearRadios.forEach(radio => {
                 radio.addEventListener('change', () => {
-                    // Affiche l'image sélectionné et cache les autres
+                    // Affiche les images sélectionnées et cache les autres
                     switch (radio.value) {
-                        case '2019':
-                            showImage('2019-image');
+                        case '2021':
+                            showImage('image_sexe2021', 'image_accidents_mois_2021');
                             break;
                         case '2020':
-                            showImage('2020-image');
+                            showImage('image_sexe2020', 'image_accidents_mois_2020');
                             break;
-                        case '2021':
-                            showImage('2021-image');
+                        case '2019':
+                            showImage('image_sexe2019', 'image_accidents_mois_2019');
                             break;
                         default:
-                            showImage('all-image');
+                            showImage('image_sexe_all', 'image_accidents_mois_all');
                             break;
                     }
                 });
             });
 
-            // Affiche l'image ayant l'id spécifié et cache les autres
-            function showImage(imageId) {
+            // Affiche les images ayant leur id spécifié et cache les autres
+            function showImage(...imageIds) {
                 const images = imageContainer.getElementsByTagName('img');
                 for (let i = 0; i < images.length; i++) {
-                    if (images[i].id === imageId) {
+                    if (imageIds.includes(images[i].id)) {
                         images[i].style.display = 'block';
                     } else {
                         images[i].style.display = 'none';
@@ -92,6 +96,27 @@
                 }
             }
         </script>
+
+        <div class="card2">
+            <h2>Sommaire des graphes</h2>
+            <form>
+                Répartition des usagers par sexe par année(s) qui ont eu un accident : <br>
+                <a href="#image_sexe_all">image_sexe_all</a>
+                <a href="#image_sexe2021">image_sexe2021</a>
+                <a href="#image_sexe2020">image_sexe2020</a>
+                <a href="#image_sexe2019">image_sexe2019</a>
+                <br><br> Histogramme 3D du nombre d'accidents par heures par mois : <br>
+                <a href="#image_3d_accidents_heures_mois">image_3d_accidents_heures_mois</a>
+                <br><br> Type de collisions : <br>
+                <a href="#image_accidents_type_collisions">image_accidents_type_collisions</a>
+                <br><br> Nombre d'accidents par mois par année(s) : <br>
+                <a href="#image_accidents_mois_all">image_accidents_mois_all</a> /
+                <a href="#image_accidents_mois_2021">image_accidents_mois_2021</a> /
+                <a href="#image_accidents_mois_2020">image_accidents_mois_2020</a> /
+                <a href="#image_accidents_mois_2019">image_accidents_mois_2019</a>
+            </form>
+        </div>
+
     </div>
 </body>
 </html>
@@ -106,5 +131,31 @@
     .container {
         color: white;
         margin-top: 3%;
+    }
+
+    .card {
+        position: fixed;
+        top: 15%;
+        left: 60%;
+        right: 10%;
+        padding: 10px;
+
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 10px; /* 5px rounded corners */
+        background-color: #283747;
+    }
+
+    .card2 {
+        position: fixed;
+        top: 45%;
+        left: 60%;
+        right: 10%;
+        padding: 10px;
+
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 10px; /* 5px rounded corners */
+        background-color: #283747;
     }
 </style>
