@@ -39,4 +39,4 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 ### 16/04
     Nicolas : 
     Hugo : 
-    Théo : Ajout d'une section sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule
+    Théo : Ajout d'une section (card) sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule / ajout de commentaire sur les graphes

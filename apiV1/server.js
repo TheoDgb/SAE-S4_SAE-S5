@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const https = require('https');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,14 +14,14 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'home.html'));
 });
-app.get('/swagger', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'swagger.html'));
-});
 app.get('/heatmap', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'heatmap.html'));
 });
 app.get('/heatmapshow', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'heatmapshow.html'));
+});
+app.get('/rien', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'rien.html'));
 });
 
 // EN BASE 64
@@ -42,7 +43,7 @@ PythonShell.run('script.py', options, function (err) {
 });
 
 // Nombre d'accidents par mois de l'année
-PythonShell.run('script2.py', options, function (err) {
+PythonShell.run('script_accident_par_mois_par_annee.py', options, function (err) {
     if (err) throw err;
     fs.readFile('./public/images/image.png', (err, data) => {
         if (err) throw err;
@@ -56,7 +57,6 @@ PythonShell.run('script2.py', options, function (err) {
 
 // télécharger des datasets en csv depuis opendaatsoft sans axios des accidents corporels de la circulation millésimé:
 
-const https = require('https');
 // A FAIRE : DL AUTO (MAUVAIS LIENS)
 
 // const filecaracteristiques2021 = fs.createWriteStream("./data/accidents2.csv");

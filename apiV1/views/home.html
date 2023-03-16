@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mon site web</title>
+    <title>Projet Visualisation de Données</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,10 +19,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/swagger">Swagger</a>
+                    <a class="nav-link" href="/heatmap">Heatmap</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/heatmap">Heatmap</a>
+                    <a class="nav-link" href="/rien">Rien</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">?</a>
@@ -33,11 +33,18 @@
     <div class="container">
         <h2>Home</h2>
         <img src="/images/image_3d_accidents_heures_mois.png" id="image_3d_accidents_heures_mois" alt="image_3d_accidents_heures_mois" style="width: 50%; height: auto;">
-        <img src="/images/image_accidents_type_collisions.png" id="image_accidents_type_collisions" alt="image_accidents_type_collisions" style="width: 50%; height: auto;">
+        <br> On remarque que le nombre d'accidents augmente a partir de 7h puis atteint
+        <br> son pic entre 15 et 18h et enfin baisse.
+        <br> Il y a plus d'accidents en juin-juillet du aux vacances.
+        <br> Il y a également une augmentation du nombre d'accidents sur toute la journée
+        <br> pour octobre-novembre-décembre à cause du climat. <br><br>
 
+        <img src="/images/image_accidents_type_collisions.png" id="image_accidents_type_collisions" alt="image_accidents_type_collisions" style="width: 50%; height: auto;">
+        <br> On observe que la majorité des collisions se font sur le côté de la voiture
+        <br> et frontalement. <br><br>
 
         <div class="card">
-            <h2>Filtrer par année</h2>
+            <h2>Filtrer par année(s)</h2>
             <form>
                 <input type="radio" id="all" name="year" value="all" checked>
                 <label for="all">Années 2019-2020-2021</label><br>
@@ -54,11 +61,15 @@
             <img id="image_sexe2021" src="/images/image_sexe2021.png" style="display: none;">
             <img id="image_sexe2020" src="/images/image_sexe2020.png" style="display: none;">
             <img id="image_sexe2019" src="/images/image_sexe2019.png"style="display: none;">
+            <br> On remarque que la répartition des usagers parsexe qui ont eu un accident de change pas
+            <br> au fil des années. <br><br>
 
             <img id="image_accidents_mois_all" src="/images/image_accidents_mois_all.png">
             <img id="image_accidents_mois_2019" src="/images/image_accidents_mois_2019.png" style="display: none;">
             <img id="image_accidents_mois_2020" src="/images/image_accidents_mois_2020.png" style="display: none;">
             <img id="image_accidents_mois_2021" src="/images/image_accidents_mois_2021.png" style="display: none;">
+            <br> Le nombre d'accidents augmente beaucoup en juin-juillet et en
+            <br> septembre-octobre-novembre-décembre. <br><br>
         </div>
         <script>
             const yearRadios = document.getElementsByName('year');
@@ -101,9 +112,9 @@
             <h2>Sommaire des graphes</h2>
             <form>
                 Répartition des usagers par sexe par année(s) qui ont eu un accident : <br>
-                <a href="#image_sexe_all">image_sexe_all</a>
-                <a href="#image_sexe2021">image_sexe2021</a>
-                <a href="#image_sexe2020">image_sexe2020</a>
+                <a href="#image_sexe_all">image_sexe_all</a> /
+                <a href="#image_sexe2021">image_sexe2021</a> /
+                <a href="#image_sexe2020">image_sexe2020</a> /
                 <a href="#image_sexe2019">image_sexe2019</a>
                 <br><br> Histogramme 3D du nombre d'accidents par heures par mois : <br>
                 <a href="#image_3d_accidents_heures_mois">image_3d_accidents_heures_mois</a>
@@ -142,7 +153,7 @@
 
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         transition: 0.3s;
-        border-radius: 10px; /* 5px rounded corners */
+        border-radius: 10px;
         background-color: #283747;
     }
 

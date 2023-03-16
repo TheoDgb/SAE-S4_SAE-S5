@@ -59,6 +59,7 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ['Janvier', 'Février', 'Mars
                                        'Novembre', 'Décembre'], rotation=90)
 plt.savefig("./public/images/image_accidents_mois_2019.png")
 # plt.show()
+
 # ===== Graphe nb accidents par mois 2020 =====
 sns.countplot(x='mois', data=donnees_2020)
 plt.title('Nombre d\'accidents par mois de 2020')
@@ -69,6 +70,7 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ['Janvier', 'Février', 'Mars
                                        'Novembre', 'Décembre'], rotation=90)
 plt.savefig("./public/images/image_accidents_mois_2020.png")
 # plt.show()
+
 # ===== Graphe nb accidents par mois 2021 =====
 sns.countplot(x='mois', data=donnees_2021)
 plt.title('Nombre d\'accidents par mois de 2021')
@@ -79,6 +81,7 @@ plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ['Janvier', 'Février', 'Mars
                                        'Novembre', 'Décembre'], rotation=90)
 plt.savefig("./public/images/image_accidents_mois_2021.png")
 # plt.show()
+
 # ===== Graphe nb accidents par mois pour 2019-2020-2021 =====
 sns.countplot(x='mois', data=donnees_combined)
 plt.title('Nombre d\'accidents par mois de 2019-2020-2021')
