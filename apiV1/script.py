@@ -50,6 +50,7 @@ donnees_combined['lat'] = donnees_combined['lat'].str.replace(',', '.').astype(f
 donnees_combined['long'] = donnees_combined['long'].str.replace(',', '.').astype(float)
 donnees_combined['hrmn'] = donnees_combined['hrmn'].str.replace(':', '.').astype(float)
 donnees_combined = donnees_combined.loc[donnees_combined['vma'] != -1]
+
 ################################# Graphes #################################
 
 # afficher un graphe de la répartition des usagers par sexe
@@ -106,7 +107,7 @@ plt.savefig("./public/images/image_accidents_type_collisions.png")
 # plt.show()
 
 
-# ===== Créer une carte centrée sur la France =====
+# ===== Heatmap nombre d'accidents =====
 map = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
 
 # Ajouter une couche de chaleur (heatmap) en utilisant les coordonnées des accidents
@@ -124,7 +125,7 @@ map.add_child(heatmap)
 
 
 
-#3D Histogramme
+# ===== 3D Histogramme nombre d'accidents par heures et mois =====
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 # Créer un histogramme en 2D des heures et des mois
@@ -139,7 +140,7 @@ dx = dy = 1
 dz = hist.ravel()
 # Créer l'histogramme en 3D
 ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b', zsort='average')
-# Ajouter les étiquettes des axes
+
 ax.set_xlabel('Heures')
 ax.set_ylabel('Mois')
 ax.set_zlabel('Nombre d\'accidents')
