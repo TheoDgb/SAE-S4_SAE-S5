@@ -14,7 +14,7 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     => Validation des données choisies
     Nicolas : Création de l'API javascript et lier un script python à l'API
     Hugo : Analyse des données / pré-traitement de celles-ci
-    Théo : Création du projet sur GitHub et de l'API javascript / service de téléchargement automatique des données
+    Théo : Création du projet sur GitHub et de l'API javascript / test téléchargement des données automatique
 
 ### 23-24/02
     Nicolas : Créer une image (graphe) de données de test
@@ -37,6 +37,11 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Théo : Implémentation de différents graphes dans l'API et ajout d'un filtre pour choisir l'année du countplot accidents par mois
 
 ### 16/04
-    Nicolas : 
-    Hugo : 
+    Nicolas : Clean les données
+    Hugo : Début de l'IA
     Théo : Ajout d'une section (card) sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule / ajout de commentaire sur les graphes
+
+### 20/04
+    Nicolas : Refonte de la modélisation / fusion des données qui étaient mal faites
+    Hugo : Test IA prédire le nombre d'accidents par rapport a une date et un département donné
+    Théo : Téléchargement automatique des données csv depuis le site data.gouv et modification des graphes avec les nouveaux datasets
