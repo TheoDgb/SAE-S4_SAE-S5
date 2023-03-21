@@ -45,3 +45,8 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Nicolas : Refonte de la modélisation / fusion des données qui étaient mal faites
     Hugo : Test IA prédire le nombre d'accidents par rapport a une date et un département donné
     Théo : Téléchargement automatique des données csv depuis le site data.gouv et modification des graphes avec les nouveaux datasets
+
+### 21/04
+    Nicolas : Correction du problème du mauvais enregistrement des images des graphes
+    Hugo : IA 
+    Théo : Correction du problème du mauvais enregistrement des images des graphes + refonte TOTALE du téléchargement automatique des données qui se téléchargeaient mal (téléchargements arrêtés en plein milieu à cause des scripts python)

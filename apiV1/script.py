@@ -144,10 +144,4 @@ map.add_child(heatmap)
 # afficher la carte
 # map
 
-
-
-
-
-
-
 # faire un await dans le javascript pour attendre le dl des csv
