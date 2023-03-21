@@ -32,16 +32,20 @@ usagers = pd.concat([usagers2021,usagers2020,usagers2019])
 vehicules = pd.concat([vehicules2021,vehicules2020,vehicules2019])
 
 # remplace les "," par des ".", les ":" par des "."  et convertit en float
-accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
-accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
-accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
-accidents = accidents.loc[accidents['vma'] != -1]
+# accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
+# accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
+# accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
+# accidents = accidents.loc[accidents['vma'] != -1]
 
 ################################# Graphes #################################
 
 # Nombre d'accidents par mois de l'année
 
 # ===== Graphe nb accidents par mois pour 2019-2020-2021 =====
+fig = plt.figure(figsize=(6.5, 6))
+ax = fig.add_subplot(1, 1, 1)
+fig.subplots_adjust(bottom=0.2)
+
 sns.countplot(x='mois', data=accidents)
 plt.title('Nombre d\'accidents par mois de 2019-2020-2021')
 plt.xlabel("Mois de l'accident")
@@ -53,6 +57,10 @@ plt.savefig("./public/images/image_accidents_mois_all.png")
 # plt.show()
 
 # ===== Graphe nb accidents par mois 2021 =====
+fig = plt.figure(figsize=(6.5, 6))
+ax = fig.add_subplot(1, 1, 1)
+fig.subplots_adjust(bottom=0.2)
+
 sns.countplot(x='mois', data=accidents2021)
 plt.title('Nombre d\'accidents par mois de 2021')
 plt.xlabel("Mois de l'accident")
@@ -64,6 +72,10 @@ plt.savefig("./public/images/image_accidents_mois_2021.png")
 # plt.show()
 
 # ===== Graphe nb accidents par mois 2020 =====
+fig = plt.figure(figsize=(6.5, 6))
+ax = fig.add_subplot(1, 1, 1)
+fig.subplots_adjust(bottom=0.2)
+
 sns.countplot(x='mois', data=accidents2020)
 plt.title('Nombre d\'accidents par mois de 2020')
 plt.xlabel("Mois de l'accident")
@@ -75,6 +87,10 @@ plt.savefig("./public/images/image_accidents_mois_2020.png")
 # plt.show()
 
 # ===== Graphe nb accidents par mois 2019 =====
+fig = plt.figure(figsize=(6.5, 6))
+ax = fig.add_subplot(1, 1, 1)
+fig.subplots_adjust(bottom=0.2)
+
 sns.countplot(x='mois', data=accidents2019)
 plt.title('Nombre d\'accidents par mois de 2019')
 plt.xlabel("Mois de l'accident")
