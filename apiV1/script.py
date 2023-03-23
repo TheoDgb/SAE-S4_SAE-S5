@@ -10,16 +10,19 @@ from folium.plugins import HeatMap
 
 ################################# Importation des fichiers CSV #################################
 
+# lectures des fichiers 2021
 caracteristiques2021 = pd.read_csv('./data/2021/caracteristiques-2021.csv',sep=';')
 lieux2021 = pd.read_csv('./data/2021/lieux-2021.csv',sep=';')
 usagers2021 = pd.read_csv('./data/2021/usagers-2021.csv',sep=';')
 vehicules2021 = pd.read_csv('./data/2021/vehicules-2021.csv',sep=';')
 
+# lectures des fichiers 2020
 caracteristiques2020 = pd.read_csv('./data/2020/caracteristiques-2020.csv',sep=';')
 lieux2020 = pd.read_csv('./data/2020/lieux-2020.csv',sep=';')
 usagers2020 = pd.read_csv('./data/2020/usagers-2020.csv',sep=';')
 vehicules2020 = pd.read_csv('./data/2020/vehicules-2020.csv',sep=';')
 
+# lectures des fichiers 2019
 caracteristiques2019 = pd.read_csv('./data/2019/caracteristiques-2019.csv',sep=';')
 lieux2019 = pd.read_csv('./data/2019/lieux-2019.csv',sep=';')
 usagers2019 = pd.read_csv('./data/2019/usagers-2019.csv',sep=';')
@@ -27,28 +30,35 @@ vehicules2019 = pd.read_csv('./data/2019/vehicules-2019.csv',sep=';')
 
 ################################# Modifications des données #################################
 
-# supprimer les lignes qui ont pour valeur de sexe -1
-usagers2021 = usagers2021.loc[usagers2021['sexe'] != -1]
-
-accidents2021 = pd.merge(caracteristiques2021,lieux2021)
-accidents2020 = pd.merge(caracteristiques2020,lieux2020)
-accidents2019 = pd.merge(caracteristiques2019,lieux2019)
-
-accidents = pd.concat([accidents2021,accidents2020,accidents2019])
+# concaténation des années
+caracteristiques = pd.concat([caracteristiques2021,caracteristiques2020,caracteristiques2019])
+lieux = pd.concat([lieux2021,lieux2020,lieux2019])
 usagers = pd.concat([usagers2021,usagers2020,usagers2019])
 vehicules = pd.concat([vehicules2021,vehicules2020,vehicules2019])
 
-# remplace les "," par des ".", les ":" par des "."  et convertit en float
+accidents = pd.merge(caracteristiques,lieux)
+
+usagersdata = pd.merge(accidents,usagers)
+
+# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par accidents
 accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
 accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
 accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
-accidents = accidents.loc[accidents['vma'] != -1]
+
+# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par usagers
+usagersdata['lat'] = usagersdata['lat'].str.replace(',', '.').astype(float)
+usagersdata['long'] = usagersdata['long'].str.replace(',', '.').astype(float)
+usagersdata['hrmn'] = usagersdata['hrmn'].str.replace(':', '.').astype(float)
+
+# sexe -1 enlever
+
+usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
 ################################# Graphes #################################
 
 # ===== répartition des usagers par sexe =====
 fig = plt.figure(figsize=(6.5, 5))
-sns.countplot(x='sexe', data=usagers)
+sns.countplot(x='sexe', data=usagersdata)
 plt.title('Répartition des usagers par sexe en 2019-2020-2021')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')
@@ -57,7 +67,7 @@ plt.savefig("./public/images/image_sexe_all.png")
 # plt.show()
 
 fig = plt.figure(figsize=(6.5, 5))
-sns.countplot(x='sexe', data=usagers2021)
+sns.countplot(x='sexe', data=usagersdata[usagersdata['an'] == 2021])
 plt.title('Répartition des usagers par sexe en 2021')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')
@@ -66,7 +76,7 @@ plt.savefig("./public/images/image_sexe2021.png")
 # plt.show()
 
 fig = plt.figure(figsize=(6.5, 5))
-sns.countplot(x='sexe', data=usagers2020)
+sns.countplot(x='sexe', data=usagersdata[usagersdata['an'] == 2020])
 plt.title('Répartition des usagers par sexe en 2020')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')
@@ -75,7 +85,7 @@ plt.savefig("./public/images/image_sexe2020.png")
 # plt.show()
 
 fig = plt.figure(figsize=(6.5, 5))
-sns.countplot(x='sexe', data=usagers2019)
+sns.countplot(x='sexe', data=usagersdata[usagersdata['an'] == 2019])
 plt.title('Répartition des usagers par sexe en 2019')
 plt.xlabel('Sexe')
 plt.ylabel('Nombre d\'usagers')

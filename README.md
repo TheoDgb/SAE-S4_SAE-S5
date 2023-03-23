@@ -18,7 +18,7 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ### 23-24/02
     Nicolas : Créer une image (graphe) de données de test
-    Hugo : Fusioner les données 
+    Hugo : Fusioner les données
     Théo : Création de la partie front / refonte du server.js
 
 ### 2/03
@@ -48,5 +48,8 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ### 21/04
     Nicolas : Correction du problème du mauvais enregistrement des images des graphes
-    Hugo : IA 
+    Hugo : IA
     Théo : Correction du problème du mauvais enregistrement des images des graphes + refonte TOTALE du téléchargement automatique des données qui se téléchargeaient mal (téléchargements arrêtés en plein milieu à cause des scripts python)
+
+### 23/04
+    Nicolas : implémentations des nouvelles données dans l'api

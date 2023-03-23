@@ -20,22 +20,29 @@ vehicules2019 = pd.read_csv('./data/2019/vehicules-2019.csv',sep=';')
 
 ################################# Modifications des données #################################
 
-# supprimer les lignes qui ont pour valeur de sexe -1
-usagers2021 = usagers2021.loc[usagers2021['sexe'] != -1]
-
-accidents2021 = pd.merge(caracteristiques2021,lieux2021)
-accidents2020 = pd.merge(caracteristiques2020,lieux2020)
-accidents2019 = pd.merge(caracteristiques2019,lieux2019)
-
-accidents = pd.concat([accidents2021,accidents2020,accidents2019])
+# concaténation des années
+caracteristiques = pd.concat([caracteristiques2021,caracteristiques2020,caracteristiques2019])
+lieux = pd.concat([lieux2021,lieux2020,lieux2019])
 usagers = pd.concat([usagers2021,usagers2020,usagers2019])
 vehicules = pd.concat([vehicules2021,vehicules2020,vehicules2019])
 
-# remplace les "," par des ".", les ":" par des "."  et convertit en float
-# accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
-# accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
-# accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
-# accidents = accidents.loc[accidents['vma'] != -1]
+accidents = pd.merge(caracteristiques,lieux)
+
+usagersdata = pd.merge(accidents,usagers)
+
+# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par accidents
+accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
+accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
+accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
+
+# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par usagers
+usagersdata['lat'] = usagersdata['lat'].str.replace(',', '.').astype(float)
+usagersdata['long'] = usagersdata['long'].str.replace(',', '.').astype(float)
+usagersdata['hrmn'] = usagersdata['hrmn'].str.replace(':', '.').astype(float)
+
+# sexe -1 enlever
+
+usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
 ################################# Graphes #################################
 
@@ -61,7 +68,7 @@ fig = plt.figure(figsize=(6.5, 6))
 ax = fig.add_subplot(1, 1, 1)
 fig.subplots_adjust(bottom=0.2)
 
-sns.countplot(x='mois', data=accidents2021)
+sns.countplot(x='mois', data=accidents[accidents['an']==2021])
 plt.title('Nombre d\'accidents par mois de 2021')
 plt.xlabel("Mois de l'accident")
 plt.ylabel("Nombre d'accidents")
@@ -76,7 +83,7 @@ fig = plt.figure(figsize=(6.5, 6))
 ax = fig.add_subplot(1, 1, 1)
 fig.subplots_adjust(bottom=0.2)
 
-sns.countplot(x='mois', data=accidents2020)
+sns.countplot(x='mois', data=accidents[accidents['an']==2020])
 plt.title('Nombre d\'accidents par mois de 2020')
 plt.xlabel("Mois de l'accident")
 plt.ylabel("Nombre d'accidents")
@@ -91,7 +98,7 @@ fig = plt.figure(figsize=(6.5, 6))
 ax = fig.add_subplot(1, 1, 1)
 fig.subplots_adjust(bottom=0.2)
 
-sns.countplot(x='mois', data=accidents2019)
+sns.countplot(x='mois', data=accidents[accidents['an']==2019])
 plt.title('Nombre d\'accidents par mois de 2019')
 plt.xlabel("Mois de l'accident")
 plt.ylabel("Nombre d'accidents")
