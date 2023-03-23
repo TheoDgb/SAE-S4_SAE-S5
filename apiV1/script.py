@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 # 3D graphe
-from mpl_toolkits.mplot3d import Axes3D
+import plotly.graph_objs as go
 # Heatmap
 import folium
 from folium.plugins import HeatMap
@@ -113,27 +113,22 @@ plt.savefig("./public/images/image_accidents_type_collisions.png")
 
 
 # ===== 3D Histogramme nombre d'accidents par heures et mois =====
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-# Créer un histogramme en 2D des heures et des mois
-hist, xedges, yedges = np.histogram2d(accidents['hrmn'], accidents['mois'], bins=(24, 12))
-# Obtenir les coordonnées x, y et z des bords de l'histogramme
-xpos, ypos = np.meshgrid(xedges[:-1], yedges[:-1], indexing="ij")
-xpos = xpos.ravel()
-ypos = ypos.ravel()
-zpos = 0
-# Obtenir les dimensions des bords de chaque rectangle d'histogramme
-dx = dy = 1
-dz = hist.ravel()
-# Créer l'histogramme en 3D
-ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b', zsort='average')
 
-ax.set_xlabel('Heures')
-ax.set_ylabel('Mois')
-ax.set_zlabel('Nombre d\'accidents')
-ax.set_title('Histogramme 3D du nombre d\'accidents par heures et mois')
-plt.savefig("./public/images/image_3d_accidents_heures_mois.png")
-# plt.show()
+# Créer un histogramme en 2D des heures et des mois
+# compte le nombre d'accidents pour chaque combinaison de mois et d'heure
+hist, xedges, yedges = np.histogram2d(accidents['mois'], accidents['hrmn'], bins=(12, 24))
+
+# Créer l'histogramme en 3D
+fig = go.Figure(data=[go.Surface(x=np.flip(xedges[:-1]), y=yedges[:-1], z=hist.T)]) #.T pour inverser les axes, on peut mettre colorscale='jet' pour changer la couleur
+# np.flip pour inverser l'axe des mois "du 12 au 1" au lieu de "du 1 au 12"
+
+fig.update_layout(title='Histogramme 3D du nombre d\'accidents par heure et mois',
+                  scene=dict(xaxis_title='Mois', yaxis_title='Heures', zaxis_title='Nombre d\'accidents'),
+                  scene_xaxis_ticktext=np.flip(['Décembre', 'Novembre', 'Octobre', 'Septembre', 'Août', 'Juillet', 'Juin', 'Mai', 'Avril', 'Mars', 'Février', 'Janvier']),
+                  scene_xaxis_tickvals=np.flip(xedges[:-1]))
+                  # inverse l'affichage dans la légende des mois et donne le nom des mois
+fig.write_html('./views/3d_nb_accidents_heures_mois.html')
+# fig.show()
 
 
 
@@ -152,5 +147,3 @@ map.add_child(heatmap)
 # map.save("./views/heatmapshow.html")
 # afficher la carte
 # map
-
-# faire un await dans le javascript pour attendre le dl des csv

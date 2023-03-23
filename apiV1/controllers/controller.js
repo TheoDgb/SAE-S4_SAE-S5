@@ -13,3 +13,6 @@ exports.rien = function(req, res) {
 exports.vbarStackNbUsagersParBlessureEtCategorie = function(req, res) {
     res.render('vbarStackNbUsagersParBlessureEtCategorie');
 }
+exports.tridNbAccidentsHeuresMois = function(req, res) {
+    res.render('tridNbAccidentsHeuresMois');
+}

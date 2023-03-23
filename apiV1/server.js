@@ -32,6 +32,9 @@ app.get('/rien', (req, res) => {
 app.get('/vbar-stack-nb-usagers-par-blessure-et-categorie', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'nb_usagers_par_blessure_et_categorie.html'));
 });
+app.get('/3d-nb-accidents-heures-mois', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', '3d_nb_accidents_heures_mois.html'));
+});
 
 
 // Télécharger des datasets en csv depuis data.gouv "Bases de données annuelles des accidents corporels de la circulation routière"

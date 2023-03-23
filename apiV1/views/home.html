@@ -32,16 +32,16 @@
     </nav>
     <div class="container">
         <h2>Home</h2>
-        <img src="/images/image_3d_accidents_heures_mois.png" id="image_3d_accidents_heures_mois" alt="image_3d_accidents_heures_mois" style="width: 50%; height: auto;">
-        <br> On remarque que le nombre d'accidents augmente a partir de 7h puis atteint
-        <br> son pic entre 15 et 18h et enfin baisse.
-        <br> Il y a plus d'accidents en juin-juillet du aux vacances.
-        <br> Il y a également une augmentation du nombre d'accidents sur toute la journée
-        <br> pour octobre-novembre-décembre à cause du climat. <br><br>
-
         <img src="/images/image_accidents_type_collisions.png" id="image_accidents_type_collisions" alt="image_accidents_type_collisions" style="width: 50%; height: auto;">
         <br> On observe que la majorité des collisions se font sur le côté de la voiture
         <br> et frontalement. <br><br>
+
+        <iframe id="3d-nb-accidents-heures-mois" src="/3d-nb-accidents-heures-mois" width="54.5%" height="604" style="background-color: white"></iframe>
+        <br> On remarque que le nombre d'accidents augmente une première fois à partir
+        <br> de 6h jusqu'à 8h puis atteint son pic entre 15 et 18h et enfin baisse.
+        <br> Il y a plus d'accidents en juin-juillet du aux vacances.
+        <br> On observe également une augmentation du nombre d'accidents sur toute la journée
+        <br> pour octobre-novembre-décembre à cause du climat. <br><br>
 
         <iframe id="vbar-stack-nb-usagers-par-blessure-et-categorie" src="/vbar-stack-nb-usagers-par-blessure-et-categorie" width="54.5%" height="604"></iframe>
         <br> On observe que la moitié des conducteurs ayant eu un accident sont blessé,
@@ -119,10 +119,10 @@
         <div class="card2">
             <h2>Sommaire des graphes</h2>
             <form>
-                Histogramme 3D du nombre d'accidents par heures par mois : <br>
-                <a href="#image_3d_accidents_heures_mois">image_3d_accidents_heures_mois</a>
-                <br><br> Type de collisions : <br>
+                Type de collisions : <br>
                 <a href="#image_accidents_type_collisions">image_accidents_type_collisions</a>
+                <br><br> Histogramme 3D du nombre d'accidents par heure par mois : <br>
+                <a href="#3d-nb-accidents-heures-mois">3d_nb_accidents_heures_mois</a>
                 <br><br> Nombre d'usagers pour chaque type de blessure par catégorie d'usager : <br>
                 <a href="#vbar-stack-nb-usagers-par-blessure-et-categorie">nb_usagers_par_blessure_et_categorie</a>
                 <br><br> Répartition des usagers par sexe par année(s) qui ont eu un accident : <br>

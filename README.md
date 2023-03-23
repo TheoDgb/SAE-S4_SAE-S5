@@ -54,3 +54,6 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 ### 23/04
     Nicolas : Implémentation des nouvelles données dans l'api
     Théo : Création d'un graphe bokeh vbar_stack avec une table pivot et un HoverTool représentant le nombre d'usagers pour chaque type de blessure et catégorie d'usager + ajout sur l'API
+
+### 24/04
+    Théo : Nouveau 3D graphe fait avec plotly représentant le nombre d'accidents par heure et mois
