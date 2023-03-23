@@ -52,4 +52,5 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Théo : Correction du problème du mauvais enregistrement des images des graphes + refonte TOTALE du téléchargement automatique des données qui se téléchargeaient mal (téléchargements arrêtés en plein milieu à cause des scripts python)
 
 ### 23/04
-    Nicolas : implémentations des nouvelles données dans l'api
+    Nicolas : Implémentation des nouvelles données dans l'api
+    Théo : Création d'un graphe bokeh vbar_stack avec une table pivot et un HoverTool représentant le nombre d'usagers pour chaque type de blessure et catégorie d'usager + ajout sur l'API

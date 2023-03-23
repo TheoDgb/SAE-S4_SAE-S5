@@ -29,7 +29,9 @@ app.get('/heatmapshow', (req, res) => {
 app.get('/rien', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'rien.html'));
 });
-
+app.get('/vbar-stack-nb-usagers-par-blessure-et-categorie', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'nb_usagers_par_blessure_et_categorie.html'));
+});
 
 
 // Télécharger des datasets en csv depuis data.gouv "Bases de données annuelles des accidents corporels de la circulation routière"
@@ -95,6 +97,17 @@ const downloadAllFiles = async () => {
 
         // Nombre d'accidents par mois de l'année
         PythonShell.run('script_accident_par_mois_par_annee.py', options, function (err) {
+            if (err) throw err;
+            fs.readFile('./public/images/image.png', (err, data) => {
+                if (err) throw err;
+                const base64Image = Buffer.from(data, 'binary').toString('base64');
+                const imgSrc = `data:image/png;base64,${base64Image}`;
+                // console.log(imgSrc);
+            });
+        });
+
+        // Nombre d'usagers pour chaque type de blessure et catégorie d'usager
+        PythonShell.run('script_nb_usagers_par_blessure_et_categorie.py', options, function (err) {
             if (err) throw err;
             fs.readFile('./public/images/image.png', (err, data) => {
                 if (err) throw err;

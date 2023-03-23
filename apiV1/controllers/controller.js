@@ -10,3 +10,6 @@ exports.heatmapshow = function(req, res) {
 exports.rien = function(req, res) {
     res.render('rien');
 }
+exports.vbarStackNbUsagersParBlessureEtCategorie = function(req, res) {
+    res.render('vbarStackNbUsagersParBlessureEtCategorie');
+}

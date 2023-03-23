@@ -51,7 +51,6 @@ usagersdata['long'] = usagersdata['long'].str.replace(',', '.').astype(float)
 usagersdata['hrmn'] = usagersdata['hrmn'].str.replace(':', '.').astype(float)
 
 # sexe -1 enlever
-
 usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
 ################################# Graphes #################################
@@ -150,7 +149,7 @@ folium.LayerControl().add_to(map)
 map.add_child(heatmap)
 
 # trèèès long à charger => heatmap créée sur Jupyter puis sauvegardée dans le projet
-# map.save("./public/view/heatmapshow.html")
+# map.save("./views/heatmapshow.html")
 # afficher la carte
 # map
 

@@ -5,4 +5,5 @@ module.exports = function(app){
     app.get('/heatmap', controller.heatmap);
     app.get('/heatmapshow', controller.heatmapshow);
     app.get('/rien', controller.rien);
+    app.get('/vbar-stack-nb-usagers-par-blessure-et-categorie', controller.vbarStackNbUsagersParBlessureEtCategorie);
 }

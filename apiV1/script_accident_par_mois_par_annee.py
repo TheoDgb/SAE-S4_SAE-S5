@@ -41,7 +41,6 @@ usagersdata['long'] = usagersdata['long'].str.replace(',', '.').astype(float)
 usagersdata['hrmn'] = usagersdata['hrmn'].str.replace(':', '.').astype(float)
 
 # sexe -1 enlever
-
 usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
 ################################# Graphes #################################
