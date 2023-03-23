@@ -143,7 +143,4 @@ heatmap.add_to(map)
 folium.LayerControl().add_to(map)
 map.add_child(heatmap)
 
-# trèèès long à charger => heatmap créée sur Jupyter puis sauvegardée dans le projet
-# map.save("./views/heatmapshow.html")
-# afficher la carte
-# map
+map.save("./views/heatmapshow.html")
