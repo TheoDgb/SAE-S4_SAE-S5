@@ -42,10 +42,16 @@ caracteristiques['hrmn'] = caracteristiques['hrmn'].str.replace(':', '.').astype
 
 # données par accident
 accidents = pd.merge(caracteristiques,lieux)
+# drop des colonnes inutiles
+accidents = accidents.drop(columns=['com', 'adr', 'int', 'voie', 'v1', 'v2', 'circ', 'nbv', 'vosp', 'prof', 'pr', 'pr1', 'plan', 'lartpc'])
+
 # données par usager
 usagersdata = pd.merge(accidents,usagers)
+
 # données par véhicule
 vehiculesdata = pd.merge(accidents,vehicules)
+# drop des colonnes inutiles
+vehiculesdata = vehiculesdata.drop(columns=['senc'])
 
 # enlever les -1 dans la colonne sexe
 usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
