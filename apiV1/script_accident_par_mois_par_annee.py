@@ -3,16 +3,25 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
+from bokeh.plotting import figure, show
+from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.io import output_file, save, show
+
+################################# Import des fichiers CSV #################################
+
+# lectures des fichiers de 2021
 caracteristiques2021 = pd.read_csv('./data/2021/caracteristiques-2021.csv',sep=';')
 lieux2021 = pd.read_csv('./data/2021/lieux-2021.csv',sep=';')
 usagers2021 = pd.read_csv('./data/2021/usagers-2021.csv',sep=';')
 vehicules2021 = pd.read_csv('./data/2021/vehicules-2021.csv',sep=';')
 
+# lectures des fichiers de 2020
 caracteristiques2020 = pd.read_csv('./data/2020/caracteristiques-2020.csv',sep=';')
 lieux2020 = pd.read_csv('./data/2020/lieux-2020.csv',sep=';')
 usagers2020 = pd.read_csv('./data/2020/usagers-2020.csv',sep=';')
 vehicules2020 = pd.read_csv('./data/2020/vehicules-2020.csv',sep=';')
 
+# lectures des fichiers de 2019
 caracteristiques2019 = pd.read_csv('./data/2019/caracteristiques-2019.csv',sep=';')
 lieux2019 = pd.read_csv('./data/2019/lieux-2019.csv',sep=';')
 usagers2019 = pd.read_csv('./data/2019/usagers-2019.csv',sep=';')
@@ -26,21 +35,19 @@ lieux = pd.concat([lieux2021,lieux2020,lieux2019])
 usagers = pd.concat([usagers2021,usagers2020,usagers2019])
 vehicules = pd.concat([vehicules2021,vehicules2020,vehicules2019])
 
+# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes
+caracteristiques['lat'] = caracteristiques['lat'].str.replace(',', '.').astype(float)
+caracteristiques['long'] = caracteristiques['long'].str.replace(',', '.').astype(float)
+caracteristiques['hrmn'] = caracteristiques['hrmn'].str.replace(':', '.').astype(float)
+
+# données par accident
 accidents = pd.merge(caracteristiques,lieux)
-
+# données par usager
 usagersdata = pd.merge(accidents,usagers)
+# données par véhicule
+vehiculesdata = pd.merge(accidents,vehicules)
 
-# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par accidents
-accidents['lat'] = accidents['lat'].str.replace(',', '.').astype(float)
-accidents['long'] = accidents['long'].str.replace(',', '.').astype(float)
-accidents['hrmn'] = accidents['hrmn'].str.replace(':', '.').astype(float)
-
-# remplace les "," par des ".", les ":" par des "."  et convertit en float pour les latitudes et longitudes par usagers
-usagersdata['lat'] = usagersdata['lat'].str.replace(',', '.').astype(float)
-usagersdata['long'] = usagersdata['long'].str.replace(',', '.').astype(float)
-usagersdata['hrmn'] = usagersdata['hrmn'].str.replace(':', '.').astype(float)
-
-# sexe -1 enlever
+# enlever les -1 dans la colonne sexe
 usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
 ################################# Graphes #################################
