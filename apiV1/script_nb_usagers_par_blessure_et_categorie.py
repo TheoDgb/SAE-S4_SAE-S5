@@ -56,6 +56,22 @@ vehiculesdata = vehiculesdata.drop(columns=['senc'])
 # enlever les -1 dans la colonne sexe
 usagersdata = usagersdata.loc[usagersdata['sexe'] != -1]
 
+# ajouter une colonne nombre d'usagers impliqués dans l'accident
+merged_df = pd.merge(accidents, usagers, on='Num_Acc')
+# Calculer le nombre d'usagers par accident
+usagers_par_accident = merged_df.groupby('Num_Acc')['Num_Acc'].count().reset_index(name='Nombre_Usagers')
+# Fusionner le nombre d'usagers par accident avec le dataframe accidents
+accidents = pd.merge(accidents, usagers_par_accident, on='Num_Acc')
+accidents = accidents.rename(columns={'Num_Acc_x': 'Num_Acc', 'Num_Acc_y': 'Nombre_Usagers'})
+
+# ajouter une colonne nombre de véhicules impliqués dans l'accident
+merged_df = pd.merge(accidents, vehicules, on='Num_Acc')
+# Calculer le nombre de vehicules par accident
+vehicules_par_accident = merged_df.groupby('Num_Acc')['Num_Acc'].count().reset_index(name='Nombre_Vehicules')
+# Fusionner le nombre de vehicules par accident avec le dataframe accidents
+accidents = pd.merge(accidents, vehicules_par_accident, on='Num_Acc')
+accidents = accidents.rename(columns={'Num_Acc_x': 'Num_Acc', 'Num_Acc_y': 'Nombre_Vehicules'})
+
 ################################# Graphes #################################
 
 # Créer une table pivot des données d'usagers
