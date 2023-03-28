@@ -8,6 +8,7 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
@@ -111,6 +112,17 @@ const downloadAllFiles = async () => {
 
         // Nombre d'usagers pour chaque type de blessure et catégorie d'usager
         PythonShell.run('script_nb_usagers_par_blessure_et_categorie.py', options, function (err) {
+            if (err) throw err;
+            fs.readFile('./public/images/image.png', (err, data) => {
+                if (err) throw err;
+                const base64Image = Buffer.from(data, 'binary').toString('base64');
+                const imgSrc = `data:image/png;base64,${base64Image}`;
+                // console.log(imgSrc);
+            });
+        });
+
+        // script2
+        PythonShell.run('script2.py', options, function (err) {
             if (err) throw err;
             fs.readFile('./public/images/image.png', (err, data) => {
                 if (err) throw err;

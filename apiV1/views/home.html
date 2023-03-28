@@ -33,8 +33,20 @@
     <div class="container">
         <h2>Home</h2>
         <img src="/images/image_accidents_type_collisions.png" id="image_accidents_type_collisions" alt="image_accidents_type_collisions" style="width: 50%; height: auto;">
-        <br> On observe que la majorité des collisions se font sur le côté de la voiture
-        <br> et frontalement. <br><br>
+        <br> On observe que la majorité des collisions se font sur le côté de la voiture <br><br>
+        <img src="/images/image_nb_accidents_par_usager.png" id="image_nb_accidents_par_usager" alt="image_nb_accidents_par_usager" style="width: 50%; height: auto;">
+        <br> Plus de la moitié des accidents implique deux usagers,
+        <br> puis 19.2% implique un usager. La plus part des accidents se font entre deux
+        <br> conducteurs de véhicule. <br><br>
+        <img src="/images/image_nb_vehicules_par_accident.png" id="image_nb_vehicules_par_accident" alt="image_nb_vehicules_par_accident" style="width: 50%; height: auto;">
+        <br> La moitié des accidents implique deux véhicules. 36.7% des accidents
+        <br> implique 1 véhicule. On en conclut que la plus part des accidents sont des
+        <br> accidents de petite envergure. <br><br>
+        <img src="/images/image_proportion_etat_apres_accident_par_place.png" id="image_proportion_etat_apres_accident_par_place" alt="image_proportion_etat_apres_accident_par_place" style="width: 50%; height: auto;">
+        <img src="/images/place.png" alt="place" style="width: 50%; height: auto;">
+        <br> On observe que dans la mojorité des cas, 80% des usagers s'en sortent
+        <br> indemne ou avec une légère blessure sauf pour les piétons qui sont
+        <br> généralement hospitalisés ou blessés. Les piétons doivent être plus vigilants. <br><br>
 
         <iframe id="3d-nb-accidents-heures-mois" src="/3d-nb-accidents-heures-mois" width="54.5%" height="604" style="background-color: white"></iframe>
         <br> On remarque que le nombre d'accidents augmente une première fois à partir
@@ -119,8 +131,15 @@
         <div class="card2">
             <h2>Sommaire des graphes</h2>
             <form>
-                Type de collisions : <br>
-                <a href="#image_accidents_type_collisions">image_accidents_type_collisions</a>
+<!--                Type de collisions : <br>-->
+<!--                <a href="#image_accidents_type_collisions">image_accidents_type_collisions</a>-->
+<!--                <br><br> -->
+                Pie plot du nombre d'accidents par usager : <br>
+                <a href="#image_nb_accidents_par_usager">image_nb_accidents_par_usager</a>
+                <br><br> Pie plot du nombre de véhicules par accident : <br>
+                <a href="#image_nb_vehicules_par_accident">image_nb_vehicules_par_accident</a>
+                <br><br> Count plot de la proportion de l'état après accident selon la place e l'usager : <br>
+                <a href="#image_proportion_etat_apres_accident_par_place">image_proportion_etat_apres_accident_par_place</a>
                 <br><br> Histogramme 3D du nombre d'accidents par heure par mois : <br>
                 <a href="#3d-nb-accidents-heures-mois">3d_nb_accidents_heures_mois</a>
                 <br><br> Nombre d'usagers pour chaque type de blessure par catégorie d'usager : <br>
@@ -157,7 +176,7 @@
     }
     .card {
         position: fixed;
-        top: 15%;
+        top: 10%;
         left: 60%;
         right: 10%;
         padding: 10px;
@@ -169,7 +188,7 @@
     }
     .card2 {
         position: fixed;
-        top: 45%;
+        top: 35%;
         left: 60%;
         right: 10%;
         padding: 10px;

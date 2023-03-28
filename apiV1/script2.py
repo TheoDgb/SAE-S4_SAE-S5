@@ -3,10 +3,6 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
-from bokeh.plotting import figure, show
-from bokeh.models import ColumnDataSource, HoverTool
-from bokeh.io import output_file, save, show
-
 ################################# Import des fichiers CSV #################################
 
 # lectures des fichiers de 2021
@@ -74,42 +70,80 @@ accidents = accidents.rename(columns={'Num_Acc_x': 'Num_Acc', 'Num_Acc_y': 'Nomb
 
 ################################# Graphes #################################
 
-# Créer une table pivot des données d'usagers
+# Compter le nombre d'accidents par nombre de véhicules impliqués
+fig = plt.figure(figsize=(6.5, 5))
+fig.subplots_adjust(right=0.6)
 
-# => Chaque ligne représente une catégorie d'usager,
-# chaque colonne représente un type de blessure,
-# avec le nombre d'usagers correspondant dans chaque cellule
+u_count = accidents['Nombre_Usagers'].value_counts()
 
-# => la colonne'Num_Acc' est utilisé pour compter les usagers dans la table pivot car c'est un numéro unique pour chaque accident
-pivot_table = pd.pivot_table(usagers, values='Num_Acc', index='catu', columns='grav', aggfunc='count')
+# Regrouper les catégories 6 et plus en une catégorie
+last_index_to_combine = 5
+new_label = "6+"
+new_size = sum(u_count[last_index_to_combine:])
 
-# Créer la source de données ColumnDataSource
-source = ColumnDataSource(data=dict(
-    catu=['Conducteur', 'Passager', 'Piéton'],
-    indemne=list(pivot_table[1]),
-    tue=list(pivot_table[2]),
-    hospitalise=list(pivot_table[3]),
-    leger=list(pivot_table[4])
-))
+labels = u_count.index.tolist()[:last_index_to_combine] + [new_label]
+sizes = u_count.values.tolist()[:last_index_to_combine] + [new_size]
 
-# Créer la figure avec les barres empilées => vbar_stack
-fig = figure(x_range=['Conducteur', 'Passager', 'Piéton'],
-             x_axis_label="Catégorie d'usager", y_axis_label="Nombre d'usagers",
-             title="Nombre d'usagers pour chaque type de blessure par catégorie d'usager \nen 2019-2020-2021",
-             # Afficher les infos en passant la souris
-             tools=[HoverTool(tooltips=[
-                 ('Catégorie', '@catu'),
-                 ('Tué', '@tue'),
-                 ('Blessé hospitalisé', '@hospitalise'),
-                 ('Blessé léger', '@leger'),
-                 ('Indemne', '@indemne')
-             ])])
-fig.vbar_stack(['tue', 'hospitalise', 'leger', 'indemne'], x='catu', width=0.8, color=['red', 'orange', 'blue', 'green'],
-               source=source,
-               legend_label=['Tué', 'Blessé hospitalisé', 'Blessé léger', 'Indemne'])
+# Créer le diagramme circulaire
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=180)
+plt.axis('equal')
+plt.legend(title='Nombre d usagers impliqués', loc='center left', bbox_to_anchor=(1, 0.5))
 
-fig.legend.location = 'top_right'
+# Afficher le diagramme
+plt.title('Répartition du nombre d usagers par accident')
+plt.savefig("./public/images/image_nb_accidents_par_usager.png")
+# plt.show()
 
-output_file(filename="./views/nb_usagers_par_blessure_et_categorie.html")
-save(fig)
-# show(fig)
+
+
+# Compter le nombre d'accidents par nombre de véhicules impliqués
+fig = plt.figure(figsize=(6.5, 5))
+fig.subplots_adjust(right=0.6)
+
+v_count = accidents['Nombre_Vehicules'].value_counts()
+
+# Regrouper les catégories 4 et plus en une catégorie
+last_index_to_combine = 4
+new_label = "5+"
+new_size = sum(u_count[last_index_to_combine:])
+
+labels = v_count.index.tolist()[:last_index_to_combine] + [new_label]
+sizes = v_count.values.tolist()[:last_index_to_combine] + [new_size]
+
+# Créer le diagramme circulaire
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=180)
+plt.axis('equal')
+plt.legend(title='Nombre de vehicules impliqués', loc='center left', bbox_to_anchor=(1, 0.5))
+
+# Afficher le diagramme
+plt.title('Répartition du nombre de véhicules par accident')
+plt.savefig("./public/images/image_nb_vehicules_par_accident.png")
+# plt.show()
+
+
+
+# Mapper les numéros à des textes dans un dictionnaire
+fig = plt.figure()
+
+etat_texte = {1: 'Indemne', 2: 'Tué', 3: 'Blessé hospitalisé', 4: 'Blessé léger'}
+
+df = usagersdata
+
+# Remplacer les numéros par les textes dans la colonne "état"
+df['grav'] = df['grav'].replace(etat_texte)
+
+# Compter le nombre d'occurrences de chaque état pour chaque place
+counts = df.groupby(['place', 'grav'])['grav'].count()
+
+# Diviser par le nombre total d'occurrences pour chaque place pour obtenir les proportions
+proportions = counts.groupby('place', group_keys=False).apply(lambda x: x / float(x.sum()))
+
+# Afficher le graphique à barres des proportions pour chaque place
+ax = proportions.unstack().plot(kind='bar', stacked=True)
+ax.set_ylabel('Proportion')
+ax.set_title('Proportion de chaque état après accidents pour chaque place')
+
+# Déplacer la légende en dehors du graphique
+ax.legend(title='État', loc='center right', bbox_to_anchor=(1, 0.5))
+plt.savefig("./public/images/image_proportion_etat_apres_accident_par_place.png")
+# plt.show()
