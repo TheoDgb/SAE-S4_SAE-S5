@@ -83,53 +83,32 @@ const downloadAllFiles = async () => {
 
 
 
-        // EN BASE 64
         // scripts python qui génèrent les graphiques
         const options = {
-            scriptPath: '',
-            args: ['arg1', 'arg2', 'arg3']
+            scriptPath: ''
         };
+        // Répartition des usagers par sexe + type de colision + 3D histogramme nb d'accidents par heures et mois + heatmap nb d'accidents
         PythonShell.run('script.py', options, function (err) {
             if (err) throw err;
-            fs.readFile('./public/images/image.png', (err, data) => {
-                if (err) throw err;
-                const base64Image = Buffer.from(data, 'binary').toString('base64');
-                const imgSrc = `data:image/png;base64,${base64Image}`;
-                // console.log(imgSrc);
-            });
+            // console.log('Script 1 exécuté avec succès !');
         });
 
         // Nombre d'accidents par mois de l'année
         PythonShell.run('script_accident_par_mois_par_annee.py', options, function (err) {
             if (err) throw err;
-            fs.readFile('./public/images/image.png', (err, data) => {
-                if (err) throw err;
-                const base64Image = Buffer.from(data, 'binary').toString('base64');
-                const imgSrc = `data:image/png;base64,${base64Image}`;
-                // console.log(imgSrc);
-            });
+            // console.log('Script 2 exécuté avec succès !');
         });
 
         // Nombre d'usagers pour chaque type de blessure et catégorie d'usager
         PythonShell.run('script_nb_usagers_par_blessure_et_categorie.py', options, function (err) {
             if (err) throw err;
-            fs.readFile('./public/images/image.png', (err, data) => {
-                if (err) throw err;
-                const base64Image = Buffer.from(data, 'binary').toString('base64');
-                const imgSrc = `data:image/png;base64,${base64Image}`;
-                // console.log(imgSrc);
-            });
+            // console.log('Script 3 exécuté avec succès !');
         });
 
-        // script2
+        // pie plot
         PythonShell.run('script2.py', options, function (err) {
             if (err) throw err;
-            fs.readFile('./public/images/image.png', (err, data) => {
-                if (err) throw err;
-                const base64Image = Buffer.from(data, 'binary').toString('base64');
-                const imgSrc = `data:image/png;base64,${base64Image}`;
-                // console.log(imgSrc);
-            });
+            // console.log('Script 4 exécuté avec succès !');
         });
 
 
