@@ -60,3 +60,6 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ### 28/04
     Théo : Ajout d'un nouveau script pour de nouveaux graphes
+
+### 29/04
+    Théo : Allégement du code
