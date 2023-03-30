@@ -12,17 +12,17 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ### 2-3/02
     => Validation des données choisies
-    Nicolas : Création de l'API javascript et lier un script python à l'API
+    Nicolas : Création de l'API javascript et exécution d'un script python avec pythonshell
     Hugo : Analyse des données / pré-traitement de celles-ci
     Théo : Création du projet sur GitHub et de l'API javascript / test téléchargement des données automatique
 
 ### 23-24/02
-    Nicolas : Créer une image (graphe) de données de test
+    Nicolas : Créer et enregistrer une image (graphe) de données de test dans les fichiers d el'API
     Hugo : Fusioner les données
     Théo : Création de la partie front / refonte du server.js
 
 ### 2/03
-    Nicolas : Correction - Affichage des images créées par le script Python
+    Nicolas : Correction de l' affichage des images créées par le script Python dans l'API
     Hugo : Fusion des données / Réalisation des premiers graphes barplot avec les données fusionnées
     Théo : Creation de routes / affichage des images créées par le script Python / correction de crashs de l'API par le script Python sur le serveur.js
 
@@ -32,12 +32,12 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ### 14/03
     => Recherche pour réaliser une IA capable de prédire le nombre d'accidents
-    Nicolas : Nettoyage des données encore trop grosses
+    Nicolas : Nettoyage des données encore trop grosses (suppression des colonnes inutiles)
     Hugo : Modifications / création de graphes
     Théo : Implémentation de différents graphes dans l'API et ajout d'un filtre pour choisir l'année du countplot accidents par mois
 
 ### 16/04
-    Nicolas : Clean les données
+    Nicolas : Nettoyage des données
     Hugo : Début de l'IA
     Théo : Ajout d'une section (card) sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule / ajout de commentaire sur les graphes
 
@@ -47,7 +47,7 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Théo : Téléchargement automatique des données csv depuis le site data.gouv et modification des graphes avec les nouveaux datasets
 
 ### 21/04
-    Nicolas : Correction du problème du mauvais enregistrement des images des graphes
+    Nicolas : Correction du problème du mauvais enregistrement des images des graphes et fusion des données
     Hugo : IA
     Théo : Correction du problème du mauvais enregistrement des images des graphes + refonte TOTALE du téléchargement automatique des données qui se téléchargeaient mal (téléchargements arrêtés en plein milieu à cause des scripts python)
 
@@ -59,7 +59,5 @@ Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
     Théo : Nouveau 3D graphe fait avec plotly représentant le nombre d'accidents par heure et mois
 
 ### 28/04
+    Nicolas: Ajout de nouvelles colonnes dans le dataframe accident et ajouts de nouveaux graphes de relation
     Théo : Ajout d'un nouveau script pour de nouveaux graphes
-
-### 29/04
-    Théo : Allégement du code
