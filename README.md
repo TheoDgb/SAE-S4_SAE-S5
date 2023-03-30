@@ -37,28 +37,32 @@ Développement d'une API de visualisation de multiples données (accidents de v�
     Hugo : Modifications / création de graphes
     Théo : Implémentation de différents graphes dans l'API et ajout d'un filtre pour choisir l'année du countplot accidents par mois
 
-### 16/04
+### 16/03
     Nicolas : Nettoyage des données
     Hugo : Début de l'IA
-    Théo : Ajout d'une section (card) sommaire qui permet de sélectionner un graphe (auto scroll) / ajout graphe répartition des usagers par sexe dans le filtre / modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule / ajout de commentaire sur les graphes
+    Théo : Ajout d'une section (card) sommaire qui permet de sélectionner un graphe (auto scroll) + ajout graphe répartition des usagers par sexe dans le filtre + modification de la fonction pour afficher les images du filtre car ca n'en affichait qu'une seule + ajout de commentaire sur les graphes
 
-### 20/04
+### 20/03
     Nicolas : Refonte de la modélisation / fusion des données qui étaient mal faites
     Hugo : Test IA prédire le nombre d'accidents par rapport a une date et un département donné
     Théo : Téléchargement automatique des données csv depuis le site data.gouv et modification des graphes avec les nouveaux datasets
 
-### 21/04
+### 21/03
     Nicolas : Correction du problème du mauvais enregistrement des images des graphes et fusion des données
     Hugo : IA
     Théo : Correction du problème du mauvais enregistrement des images des graphes + refonte TOTALE du téléchargement automatique des données qui se téléchargeaient mal (téléchargements arrêtés en plein milieu à cause des scripts python)
 
-### 23/04
+### 23/03
     Nicolas : Implémentation des nouvelles données dans l'api
     Théo : Création d'un graphe bokeh vbar_stack avec une table pivot et un HoverTool représentant le nombre d'usagers pour chaque type de blessure et catégorie d'usager + ajout sur l'API
 
-### 24/04
+### 24/03
     Théo : Nouveau 3D graphe fait avec plotly représentant le nombre d'accidents par heure et mois
 
-### 28/04
+### 28/03
     Nicolas: Ajout de nouvelles colonnes dans le dataframe accident et ajouts de nouveaux graphes de relation
     Théo : Ajout d'un nouveau script pour de nouveaux graphes
+
+### 29-30/03
+    => Préparation du diaporama pour la soutenance
+    Théo : Allègement du code
