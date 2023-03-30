@@ -1,6 +1,7 @@
 # SAE-S4
-Développement d'une API de visualisation de multiples données
-Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
+Développement d'une API de visualisation de multiples données (accidents de véhicules)
+<br> en html/css/bootstrap/javascript(Node.js)/python
+<br><br> Basquin Nicolas, Bolmont Hugo, Dal Gobbo Théo
 
 ## Suivi du projet
 
